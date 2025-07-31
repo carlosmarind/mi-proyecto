@@ -1,7 +1,7 @@
 function saludo() {
-    alert("Hola mundo");
+    alert("Hello world 1");
 }
 
 function saludo2() {
-    alert("Hola mundo 2");
+    alert("Hello world 2");
 }

@@ -1,3 +1,7 @@
 function saludo3() {
-    alert("Hola a todo el mundo");
+    alert("Hello world 3");
+}
+
+function saludo4() {
+    alert("Hello world 4");
 }
