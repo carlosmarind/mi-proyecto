@@ -5,3 +5,10 @@ function saludo() {
 function saludo2() {
     alert("Hello world 2");
 }
+
+function saludoConsola() {
+    console.log("Hello world 3");
+}
+
+
+saludoConsola();
