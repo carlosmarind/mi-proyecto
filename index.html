@@ -12,29 +12,26 @@
 <body>
     <div>
         <h1 id="miElemento">Mi proyecto versionado.</h1>
-        <div>
+        <div class="contenido-principal">
             <h2>Lorem ipsum dolor sit.</h2>
-            <p onmouseleave="onMouseLeave(event)" onmouseenter="onMouseEnter(event)"
-                style="background-color: green; padding: 50px;">
+            <p class="parrafo-evento parrafo-verde" >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.......nueva modificacion
             </p>
-            <p onclick="onClick(event)" ondblclick="onDoubleClick(event);">
+            <p class="parrafo-evento parrafo-rojo">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.......nueva modificacion
             </p>
         </div>
-        <form onsubmit="onSubmit(event);">
-            <input type="text" id="nombre" placeholder="Nombre" onblur="perdidaFoco()" oninput="entradaInput(event)"
-                onkeyup="onKey(event)" onkeydown="onKey(event)">
-            <input type="text" id="apellido" placeholder="Apellido" onblur="perdidaFoco();" onchange="cambioInput()"
-                oninput="entradaInput(event)">
+        <form>
+            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="apellido" placeholder="Apellido">
             <button type="submit">Enviar</button>
         </form>
 
-        <form onclick="lamdaOnClick(event)" style="background-color: red; padding: 10px; color:white;">
-            <div onclick="lamdaOnClick(event)" style="background-color: blue; padding: 10px; color:white;">
-                <p onclick="lamdaOnClick(event)" style="background-color: red; padding:10px; color:white"> Nuestro
+        <form style="background-color: red; padding: 10px; color:white;">
+            <div style="background-color: blue; padding: 10px; color:white;">
+                <p class="parrafo-otro-evento" style="background-color: red; padding:10px; color:white"> Nuestro
                     formulario</p>
-                <input type="button" onclick="lamdaOnClick(event)" value="clickMe">
+                <input type="button" value="clickMe">
             </div>
         </form>
     </div>
@@ -100,6 +97,7 @@
 
 
     </script>
+
 </body>
 
 </html>
