@@ -6,28 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi proyecto versionado</title>
     <script src="index.js"></script>
-    <script src="index2.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <div>
-        <h1>Mi proyecto versionado.</h1>
+        <h1 id="miElemento">Mi proyecto versionado.</h1>
         <div>
             <h2>Lorem ipsum dolor sit.</h2>
-            <p>
+            <p onmouseleave="onMouseLeave(event)" onmouseenter="onMouseEnter(event)"
+                style="background-color: green; padding: 50px;">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.......nueva modificacion
             </p>
-            <p>
+            <p onclick="onClick(event)" ondblclick="onDoubleClick(event);">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.......nueva modificacion
             </p>
         </div>
-        <button onclick="saludo()">Saludar</button>
-        <button onclick="saludo2()">Saludar 2</button>
-        <button onclick="saludo3()">Saludar 3</button>
-        <button onclick="saludo4()">Saludar 4</button>
-        <button onclick="saludoConsola()">Saludar consola</button>
+        <form onsubmit="onSubmit(event);">
+            <input type="text" id="nombre" placeholder="Nombre" onblur="perdidaFoco()" oninput="entradaInput(event)"
+                onkeyup="onKey(event)" onkeydown="onKey(event)">
+            <input type="text" id="apellido" placeholder="Apellido" onblur="perdidaFoco();" onchange="cambioInput()"
+                oninput="entradaInput(event)">
+            <button type="submit">Enviar</button>
+        </form>
+
+        <form onclick="lamdaOnClick(event)" style="background-color: red; padding: 10px; color:white;">
+            <div onclick="lamdaOnClick(event)" style="background-color: blue; padding: 10px; color:white;">
+                <p onclick="lamdaOnClick(event)" style="background-color: red; padding:10px; color:white"> Nuestro
+                    formulario</p>
+                <input type="button" onclick="lamdaOnClick(event)" value="clickMe">
+            </div>
+        </form>
     </div>
+    <script>
+
+        window.onload = function () {
+            // console.log('El documento se ha cargado nuevamente en el paso 2');
+        }
+
+        window.onresize = function () {
+            // console.log('El documento se ha modificado en tamaño');
+        }
+
+        function perdidaFoco() {
+            //console.log('El campo se ha perdido el foco');
+        }
+
+        function cambioInput() {
+            //   console.log('se ha producido un cambio en el input')
+        }
+
+        function entradaInput(event) {
+            // console.log("El evento fue gatillado desde: ", event.target.id);
+            // console.log("El evento tiene el valor: ", event.target.value);
+        }
+
+        function onSubmit(event) {
+            // console.log(event)
+            event.preventDefault();
+        }
+
+        function onKey(event) {
+            console.log(event)
+        }
+
+        function onClick(event) {
+            //console.log(event)
+            mensaje = `hemos hecho click en el ${event.target.innerText}`
+            console.log(mensaje)
+            event.stopPropagation();
+        }
+
+        function onDoubleClick(event) {
+            console.log(event)
+            mensaje = `hemos hecho doble click en el ${event.target.innerText}`
+            console.log(mensaje)
+        }
+
+        function onMouseLeave(event) {
+            console.log("Sali del elemento", event.target)
+        }
+
+        function onMouseEnter(event) {
+            console.log("Entre en el  elemento", event.target)
+        }
+
+        let lamdaOnClick = event => {
+            console.log("hemos hecho click");
+            console.log("en el elemento", event.target)
+            //event.stopPropagation();
+        };
+
+
+
+    </script>
 </body>
 
 </html>
