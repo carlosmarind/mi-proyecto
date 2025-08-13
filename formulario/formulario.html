@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="formulario.js"></script>
+    <link rel="stylesheet" href="formulario.css">
+    <title>Mi Formulario en HTML y vanilla javascript</title>
+</head>
+
+<body>
+    <form id="formulario-registro">
+        <h2>Formulario de registro</h2>
+
+        <label for="nombre">Nombre </label>
+        <input type="text" name="nombre" id="nombre">
+
+        <label for="apellidos">Apellidos </label>
+        <input type="text" name="apellidos" id="apellidos">
+
+        <label for="edad">Edad </label>
+        <input type="number" name="edad" id="edad">
+
+        <label for="nacimiento">Año de nacimiento </label>
+        <input type="number" name="nacimiento" id="nacimiento">
+
+        <label for="pais">Pais</label>
+        <select name="pais" id="pais">
+            <option value="">Seleccione...</option>
+            <option value="Chile">Chile</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Peru">Peru</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Otro">Otro</option>
+        </select>
+
+        <label for="region">Region</label>
+        <input type="text" name="region" id="region">
+
+        <label for="comuna">Comuna</label>
+        <input type="text" name="comuna" id="comuna">
+
+        <label for="direccion"></label>
+        <div class="direccion-container">
+            <div>
+                <input type="text" name="dir-calle" id="dir-calle" placeholder="calle">
+            </div>
+            <div>
+                <input type="number" name="dir-numero" id="dir-numero" placeholder="numero">
+            </div>
+        </div>
+
+        <div class="radio-group">
+            <label>Sexo:</label>
+            <label><input type="radio" name="sexo" value="Masculino">Masculino</label>
+            <label><input type="radio" name="sexo" value="Femenino">Femenino</label>
+            <label><input type="radio" name="sexo" value="Otro">Otro</label>
+        </div>
+
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="condiciones" id="condiciones"> Aceptar las condiciones</label>
+            <label><input type="checkbox" name="informacion" id="informacion"> Confirmar informacion</label>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+
+</html>
