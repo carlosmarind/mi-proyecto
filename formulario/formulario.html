@@ -14,19 +14,23 @@
         <h2>Formulario de registro</h2>
 
         <label for="nombre">Nombre </label>
-        <input type="text" name="nombre" id="nombre">
+        <input type="text" class="form-input" name="nombre" id="nombre">
+        <p class="error nombre hidden"></p>
 
         <label for="apellidos">Apellidos </label>
-        <input type="text" name="apellidos" id="apellidos">
+        <input type="text" class="form-input" name="apellidos" id="apellidos">
+        <p class="error apellidos hidden"></p>
 
         <label for="edad">Edad </label>
-        <input type="number" name="edad" id="edad" max="120" min="12">
+        <input type="number" class="form-input" name="edad" id="edad">
+        <p class="error edad hidden"></p>
 
         <label for="nacimiento">Año de nacimiento </label>
-        <input type="number" name="nacimiento" id="nacimiento">
+        <input type="number" class="form-input" name="nacimiento" id="nacimiento">
+        <p class="error nacimiento hidden"></p>
 
         <label for="pais">Pais</label>
-        <select name="pais" id="pais">
+        <select name="pais" class="form-input" id="pais">
             <option value="">Seleccione...</option>
             <option value="Chile">Chile</option>
             <option value="Argentina">Argentina</option>
@@ -34,34 +38,44 @@
             <option value="Bolivia">Bolivia</option>
             <option value="Otro">Otro</option>
         </select>
+        <p class="error pais hidden"></p>
 
         <label for="region">Region</label>
-        <input type="text" name="region" id="region">
+        <input type="text" class="form-input" name="region" id="region">
+        <p class="error region hidden"></p>
 
         <label for="comuna">Comuna</label>
-        <input type="text" name="comuna" id="comuna">
+        <input type="text" class="form-input" name="comuna" id="comuna">
+        <p class="error comuna hidden"></p>
 
         <label for="direccion"></label>
         <div class="direccion-container">
             <div>
-                <input type="text" name="dir-calle" id="dir-calle" placeholder="calle">
+                <input type="text" class="form-input" name="dir-calle" id="dir-calle" placeholder="calle">
+                <p class="error dir-calle hidden"></p>
             </div>
             <div>
-                <input type="number" name="dir-numero" id="dir-numero" placeholder="numero">
+                <input type="number" class="form-input" name="dir-numero" id="dir-numero" placeholder="numero">
+                <p class="error dir-numero hidden"></p>
             </div>
         </div>
 
         <div class="radio-group">
             <label>Sexo:</label>
-            <label><input type="radio" name="sexo" value="Masculino" checked>Hombre</label>
-            <label><input type="radio" name="sexo" value="Femenino">Mujer</label>
-            <label><input type="radio" name="sexo" value="Otro">Otro/Otra</label>
+            <label><input type="radio" class="form-input" name="sexo" value="Masculino" checked>Hombre</label>
+            <label><input type="radio" class="form-input" name="sexo" value="Femenino">Mujer</label>
+            <label><input type="radio" class="form-input" name="sexo" value="Otro">Otro/Otra</label>
         </div>
+        <p class="error sexo hidden"></p>
 
         <div class="checkbox-group">
-            <label><input type="checkbox" name="condiciones" id="condiciones"> Aceptar las condiciones</label>
-            <label><input type="checkbox" name="informacion" id="informacion"> Confirmar informacion</label>
+            <label><input type="checkbox" class="form-input" name="condiciones" id="condiciones"> Aceptar las
+                condiciones</label>
+            <label><input type="checkbox" class="form-input" name="informacion" id="informacion"> Confirmar
+                informacion</label>
         </div>
+        <p class="error condiciones hidden"></p>
+        <p class="error informacion hidden"></p>
         <button type="submit">Enviar</button>
     </form>
 </body>

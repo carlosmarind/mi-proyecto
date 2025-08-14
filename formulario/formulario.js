@@ -1,11 +1,19 @@
-
 document.addEventListener('DOMContentLoaded', (event) => {
 
+    document.querySelectorAll(".form-input").forEach(function (elemento) {
+        elemento.addEventListener("change", function (event) {
+            console.log(`cambio ${event.currentTarget.name}`);
+            let name = event.currentTarget.name;
+            document.querySelector(`.error.${name}`).classList.add('hidden')
+            document.querySelector(`.error.${name}`).innerHTML = ''
+        });
+    });
 
-    document.getElementById("formulario-registro")
+    document
+        .getElementById("formulario-registro")
         .addEventListener("submit", function (event) {
 
-            let error = false;
+            event.preventDefault();
 
             const nombre = document.getElementById("nombre").value.trim();
             const apellidos = document.getElementById("apellidos").value.trim();
@@ -34,21 +42,121 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 condiciones,
                 informacion,
             }
-            if (!nombre) {
-                console.log("error en el nombre")
-                error = true;
+
+            let erroresEnFormulario = false;
+            // primera validacion 
+            if (validarCampo("nombre", formulario.nombre)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("apellidos", formulario.apellidos)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("edad", formulario.edad)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("nacimiento", formulario.nacimiento)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("pais", formulario.pais)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("region", formulario.region)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("dir-calle", formulario.direccion.calle)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("dir-numero", formulario.direccion.numero)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("sexo", formulario.sexo)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("condiciones", formulario.condiciones)) {
+                erroresEnFormulario = true;
+            }
+            if (validarCampo("informacion", formulario.informacion)) {
+                erroresEnFormulario = true;
             }
 
-            event.preventDefault();
-            if (!error) {
-                this.reset();
+            if (!erroresEnFormulario) {
+                console.log('haciendo submit del formulario');
+                console.log(formulario);
+                return;
             }
 
-            console.log('haciendo submit del formulario');
-            console.log(formulario);
+            console.log('Formulario se encuentra con errores');
         });
-
-
-
 });
 
+let reglasValidacion = {
+    nombre: {
+        required: true,
+        minLength: 2,
+        maxLength: 16,
+        message: {
+            required: 'El nombre es obligatorio',
+            minLength: 'El nombre debe tener al menos 2 caracteres',
+            maxLength: 'El nombre no puede tener mas de 16 caracteres'
+        }
+    },
+    edad: {
+        required: true,
+        min: 18,
+        max: 100,
+        message: {
+            required: 'La edad es obligatoria',
+            min: 'Debes ser mayor de 18 años',
+            max: 'Edad no válida'
+        }
+    },
+
+}
+
+function validarCampo(nombreCampo, valor) {
+
+    let errores = revisarReglas(nombreCampo, valor)
+
+    if (errores) {
+        elementoError = document.querySelector(`.${nombreCampo}.error`);
+        elementoError.innerHTML = ''
+        elementoError.classList.remove("hidden");
+        lista = document.createElement("ul");
+        errores.forEach(error => {
+            item = document.createElement("li");
+            item.textContent = error;
+            lista.appendChild(item);
+        });
+        elementoError.appendChild(lista);
+    }
+    return (errores && errores.length > 0);
+}
+
+function revisarReglas(nombreCampo, valor) {
+
+    const reglas = reglasValidacion[nombreCampo];
+    const errores = [];
+
+    if (!reglas) return [];
+
+    if (reglas.required && (!valor || valor.trim() === '')) {
+        errores.push(reglas.message.required)
+        return errores
+    }
+    if (!valor || valor.trim() === '') {
+        return [];
+    }
+    if (reglas.minLength && valor.length < reglas.minLength) {
+        errores.push(reglas.message.minLength)
+    }
+    if (reglas.maxLength && valor.length > reglas.maxLength) {
+        errores.push(reglas.message.maxLength)
+    }
+    if (reglas.min && parseInt(valor.length) > reglas.min) {
+        errores.push(reglas.message.min)
+    }
+    if (reglas.max && parseInt(valor.length) > reglas.max) {
+        errores.push(reglas.message.max)
+    }
+    return errores;
+}

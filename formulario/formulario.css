@@ -80,3 +80,14 @@ button {
     font-weight: bold;
     cursor: pointer;
 }
+
+p.error {
+    color: red;
+    font-weight: 300;
+    font-style: italic;
+    font-size: .8em;
+}
+
+.hidden {
+    display: none;
+}
