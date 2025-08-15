@@ -1,14 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
-    document.querySelectorAll(".form-input").forEach(function (elemento) {
-        elemento.addEventListener("change", function (event) {
-            console.log(`cambio ${event.currentTarget.name}`);
-            let name = event.currentTarget.name;
-            document.querySelector(`.error.${name}`).classList.add('hidden')
-            document.querySelector(`.error.${name}`).innerHTML = ''
-        });
-    });
-
     document
         .getElementById("formulario-registro")
         .addEventListener("submit", function (event) {
@@ -87,13 +78,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             console.log('Formulario se encuentra con errores');
         });
+
+    document.querySelectorAll(".form-input").forEach(function (elemento) {
+        elemento.addEventListener("change", function (event) {
+            console.log(`cambio ${event.currentTarget.name}`);
+            let name = event.currentTarget.name;
+            document.querySelector(`.error.${name}`).classList.add('hidden')
+            document.querySelector(`.error.${name}`).innerHTML = ''
+        });
+    });
 });
 
 let reglasValidacion = {
     nombre: {
         required: true,
         minLength: 2,
-        maxLength: 16,
+        maxLength: 20,
         message: {
             required: 'El nombre es obligatorio',
             minLength: 'El nombre debe tener al menos 2 caracteres',
@@ -113,8 +113,13 @@ let reglasValidacion = {
 
 }
 
+//retorna falso si no hay errores, y verdadero si hay errores.
 function validarCampo(nombreCampo, valor) {
 
+    // nombreCampo -> "nombre"
+    // nombreCampo -> ""
+    // .${nombreCampo} = .nombre
+    // `.${nombreCampo}.error` = .nombre.error
     let errores = revisarReglas(nombreCampo, valor)
 
     if (errores) {
@@ -134,7 +139,11 @@ function validarCampo(nombreCampo, valor) {
 
 function revisarReglas(nombreCampo, valor) {
 
+    //  nombreCampo -> "edad"
+    // valor -> = "" -> "23"
+
     const reglas = reglasValidacion[nombreCampo];
+
     const errores = [];
 
     if (!reglas) return [];
@@ -143,19 +152,21 @@ function revisarReglas(nombreCampo, valor) {
         errores.push(reglas.message.required)
         return errores
     }
+
     if (!valor || valor.trim() === '') {
         return [];
     }
+
     if (reglas.minLength && valor.length < reglas.minLength) {
         errores.push(reglas.message.minLength)
     }
     if (reglas.maxLength && valor.length > reglas.maxLength) {
         errores.push(reglas.message.maxLength)
     }
-    if (reglas.min && parseInt(valor.length) > reglas.min) {
+    if (reglas.min && parseInt(valor) < reglas.min) {
         errores.push(reglas.message.min)
     }
-    if (reglas.max && parseInt(valor.length) > reglas.max) {
+    if (reglas.max && parseInt(valor) > reglas.max) {
         errores.push(reglas.message.max)
     }
     return errores;
